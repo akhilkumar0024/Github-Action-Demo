@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillyfy - Premium Calculator Web App</title>
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glass-background"></div>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+
+    <div class="calculator-container">
+        <!-- Header -->
+        <header class="calc-header">
+            <div class="brand">
+                <span class="brand-name">Calculator</span>
+            </div>
+            <div class="api-status">
+                <span class="status-dot"></span>
+                <span class="status-text">API Online</span>
+            </div>
+        </header>
+
+        <!-- Display Area -->
+        <div class="calculator-display-container">
+            <div class="expression-line" id="expression-line">0</div>
+            <div class="result-line" id="result-line">0</div>
+        </div>
+
+        <!-- Keypad Grid -->
+        <div class="calculator-keypad">
+            <!-- Row 1: Clear, Backspace, Power, Square Root -->
+            <button class="btn btn-utility" id="btn-clear" aria-label="Clear all">C</button>
+            <button class="btn btn-utility" id="btn-backspace" aria-label="Backspace"><i class="fa-solid fa-delete-left"></i></button>
+            <button class="btn btn-operator" data-op="power" aria-label="Power">x<sup>y</sup></button>
+            <button class="btn btn-operator" data-op="square_root" aria-label="Square Root">&radic;</button>
+
+            <!-- Row 2: 7, 8, 9, Divide -->
+            <button class="btn btn-num" data-val="7">7</button>
+            <button class="btn btn-num" data-val="8">8</button>
+            <button class="btn btn-num" data-val="9">9</button>
+            <button class="btn btn-operator" data-op="divide" aria-label="Divide">&divide;</button>
+
+            <!-- Row 3: 4, 5, 6, Multiply -->
+            <button class="btn btn-num" data-val="4">4</button>
+            <button class="btn btn-num" data-val="5">5</button>
+            <button class="btn btn-num" data-val="6">6</button>
+            <button class="btn btn-operator" data-op="multiply" aria-label="Multiply">&times;</button>
+
+            <!-- Row 4: 1, 2, 3, Subtract -->
+            <button class="btn btn-num" data-val="1">1</button>
+            <button class="btn btn-num" data-val="2">2</button>
+            <button class="btn btn-num" data-val="3">3</button>
+            <button class="btn btn-operator" data-op="subtract" aria-label="Subtract">&minus;</button>
+
+            <!-- Row 5: Decimal, 0, Equals, Add -->
+            <button class="btn btn-num" data-val=".">.</button>
+            <button class="btn btn-num" data-val="0">0</button>
+            <button class="btn btn-equals" id="btn-equals" aria-label="Equals">=</button>
+            <button class="btn btn-operator" data-op="add" aria-label="Add">&plus;</button>
+        </div>
+
+        <!-- History / Log Panel -->
+        <footer class="calc-footer">
+            <div class="history-toggle-container">
+                <div class="history-toggle" id="history-toggle">
+                    <span>Recent History</span>
+                    <i class="fa-solid fa-chevron-down" id="history-chevron"></i>
+                </div>
+                <button class="btn-clear-history" id="btn-clear-history" title="Clear History" aria-label="Clear History">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+            <div class="history-panel collapsed" id="history-panel">
+                <div class="history-list" id="history-list">
+                    <div class="empty-history">No calculations yet</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
