@@ -28,7 +28,6 @@ jobs:
                 -Dsonar.organization=akhilkumar0024
                 -Dsonar.projectKey=akhilkumar0024_Github-Action-Demo
                 -Dsonar.sources=src
-                -Dsonar.autoscan.disabled=true
 
           
 
