@@ -19,7 +19,7 @@ jobs:
         - run: python -m pytest tests/test_app.py
         - run: flake8 src tests
         - name: SonarQube Scan
-          uses: sonarsource/sonarcloud-github-action@v5.0.0
+          uses: SonarSource/sonarqube-scan-action@v7
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
