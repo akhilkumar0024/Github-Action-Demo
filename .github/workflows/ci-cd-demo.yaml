@@ -50,6 +50,9 @@ jobs:
           with:
             context: .
             push: false
+            # setting the load flag to true tells the Docker image to be made visible and be loaded into the 
+            # docker daemon allowing other tools so view it, in this case allows trivy to see so that it can scan it
+            load: true
             tags: |
              ${{ vars.DOCKERHUB_USERNAME }}/github-action-demo:latest
              ${{vars.DOCKERHUB_USERNAME}}/github-action-demo:${{github.run_number}}
