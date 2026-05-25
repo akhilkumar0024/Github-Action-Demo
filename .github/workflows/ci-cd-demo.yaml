@@ -1,0 +1,36 @@
+name: ci-cd-demo-pipeline
+
+on:
+    workflow_dispatch:
+
+jobs:
+    checkout-code:
+        runs-on: ubuntu-latest
+        steps:
+        - name: "build-and-test"
+          uses: actions/checkout@v6
+        - name: set up python
+          uses: actions/setup-python@v6
+          with:
+            python-version: '3.13'
+        - run:  pip install -r requirements.txt
+        - run: python -m pytest test_app.py
+        - run: flake8 src tests
+        - name: SonarQube Scan
+          uses: sonarsource/sonarcloud-github-action@v5.0.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          with:
+            args: >
+                -Dsonar.organization=akhilkumar0024
+                -Dsonar.projectKey=akhilkumar0024_Github-Action-Demo
+                -Dsonar.sources=src
+
+          
+
+
+        
+
+
+
