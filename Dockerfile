@@ -6,7 +6,8 @@ WORKDIR /app
 
 # Upgrade system packages to patch high/medium security vulnerabilities
 RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
-
+#update the Python Core tools to fix base image vulnerabilities
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 # Copy only the requirements first (optimizes Docker layer caching)
 COPY requirements.txt .
 
